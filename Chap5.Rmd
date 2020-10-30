@@ -1,0 +1,20 @@
+---
+title: "Chapter 5: Basis Expansions and Regularization"
+author: "Junrui Di"
+output:
+  pdf_document:
+    toc: true
+---
+
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+
+## 1. Introduction
+
+Core concept: To augment and replace the vector of inputs $X$ with additional variables which are transformations of $X$ and then use the linear models in this new space of derived input features. 
+
+$$f(X) = \sum_{m=1}^M \beta_m h_m(X)$$
+
+where $h_m(X): \mathbb{R}^p\rightarrow \mathbb{R}$ is a transformation of $X$. This is called a linear basis expansion in $X$. 
