@@ -1,16 +1,3 @@
----
-title: "Chapter 4: Linear Methods for Classification"
-author: "Junrui Di"
-output:
-  pdf_document:
-    toc: true
----
-\newcommand{\bX}{\mathbf{X}}
-\newcommand{\bY}{\mathbf{Y}}
-\newcommand{\bx}{\mathbf{x}}
-\newcommand{\by}{\mathbf{y}}
-
-
 ## 1. Linear discriminant analysis
 
 __Question set up for classification__:

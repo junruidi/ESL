@@ -1,14 +1,3 @@
----
-title: "Chapter 3: Linear Methods for Regression"
-author: "Junrui Di"
-output:
-  pdf_document:
-    toc: true
----
-\newcommand{\bX}{\mathbf{X}}
-\newcommand{\bY}{\mathbf{Y}}
-\newcommand{\bx}{\mathbf{x}}
-\newcommand{\by}{\mathbf{y}}
 
 ## 1. Introduction
 

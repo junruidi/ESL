@@ -1,0 +1,25 @@
+---
+title: "Elements of Statistical Learning"
+author: "Junrui Di"
+output:
+  pdf_document:
+    toc: yes
+---
+
+
+# Chapter 2. Overview of Supervised Learning
+
+```{r,child = 'Chap2.Rmd'}
+```
+
+# Chapter 3: Linear Methods for Regression
+```{r,child = 'Chap3.Rmd'}
+```
+
+# Chapter 4: Linear Methodsfor Classification
+```{r,child = 'Chap4.Rmd'}
+```
+
+# Chapter 5: Basis Expansions and Regularization
+```{r,child = 'Chap5.Rmd'}
+```
