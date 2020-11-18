@@ -5,3 +5,23 @@ Core concept: To augment and replace the vector of inputs $X$ with additional va
 $$f(X) = \sum_{m=1}^M \beta_m h_m(X)$$
 
 where $h_m(X): \mathbb{R}^p\rightarrow \mathbb{R}$ is a transformation of $X$. This is called a linear basis expansion in $X$. 
+
+## 2. Peicewise Polynomials and Splines (restricted model)
+
+Dividing the domain of $X$ into contiguous intervals, and representing $f$ by a separate polynomial in each interval. 
+
+An order-$M$ (degree of the polynomial plus 1, i.e. cubic spline has $M=4$) spline with knots $\xi_j$, $j = 1\dots K$ is a piecewise polynomial of order $M$, and has continuous derivatives up to order $M-2$. The form of the truncate power basis is 
+
+$$
+\begin{aligned}
+h_j(X) &= X^{j-1}, j = 1\dots M\\
+h_{M+l}(x) &= (X-\xi_l)_{+}^{M-1}, l = 1...K
+\end{aligned}$$
+
+Cubic spline is typically good enough to depict continuity unless we need smooth derivatives. 
+
+One approach is to parametrize a family of spline by the number of basis functions or degree of freedom and have the observations $x_i$ determine the positions of the knots
+
+### 2.1 Natural Cubic Splines
+
+A NCS adds additional constraints, namely that the function is linear bey9ond the boudary knots which frees up four degrees of freedom (two constraints each in both boundary regions)
