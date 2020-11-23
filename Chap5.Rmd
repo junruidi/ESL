@@ -25,3 +25,15 @@ One approach is to parametrize a family of spline by the number of basis functio
 ### 2.1 Natural Cubic Splines
 
 A NCS adds additional constraints, namely that the function is linear bey9ond the boudary knots which frees up four degrees of freedom (two constraints each in both boundary regions)
+
+## 3. Filtering and Feature Extraction
+
+## 4. Smoothing spines
+
+Smoothing splines aviods the knot selection porblem compeltely by using a maximal set of knots. The complexity of the fit is controlled by regularization. 
+
+$$RSS(f,\lambda) = \sum_{i=1}^N\{y_i - f(x_i)\}^3 + \lambda\int \{f''(t)\}^2dt$$
+
+The penalty term penalizes curvature in the function using the smoothing parameter $\lambda$. $\lambda = 0$: $f$ is any function that interpolates the data. $\lambda = \infty$: simple least squares linear fit with no second derivative tolerated.  The results has a unique minimizer which is a natural cubic spline with knots at the unique values of the $x_i$. The solution can be wrote as 
+
+$$f(x) = \sum_{j=1}^NN_j(x)\theta_j$$
