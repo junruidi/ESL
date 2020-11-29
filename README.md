@@ -4,3 +4,5 @@ This repo contains studying notes and my thoughts on the book [_Elements of Stat
 
 
 ![](fig/icon.jpg)
+
+Another book that I find fairly useful for implementing ML techniques in R is [_Hands-On Machine Learning with R_](https://bradleyboehmke.github.io/HOML/) which has R implementation practice for all commonly used ML models. 
