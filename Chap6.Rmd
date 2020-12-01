@@ -1,0 +1,3 @@
+## 0. Introduction
+
+Class of regression techniques that achive flexibility in estimating the regression function $f(X)$ orver $\mathbb{R}^p$ by fitting different but simple model separately at each query poitn $x_0$ using only those observations close to the trage point $x_o$ to fit the simple model. This localization is achived via a weighting function kernel $K_\lambda(x_0,x_i)$. which assigns weight to $x_i$ based on its distance from $x_0$. 

@@ -55,8 +55,57 @@ $$\hat{\theta} = (\mathbf{N}^T\mathbf{B}+\lambda\mathbf{\Omega}_N)^{-1}\mathbf{N
 
 ## 4.1 Degress of Freedom and Smoother Matrices
 
-Fotted value can be written as
+Fitted value can be written as
 
 $$\hat{\mathbf{f}} = \mathbf{N}(\mathbf{N}^T\mathbf{B}+\lambda\mathbf{\Omega}_N)^{-1}\mathbf{N}^T\mathbf{y} = \mathbf{S}_\lambda y$$
 
-$\mathbf{S}_\lambda$ is known as the smoot her matrix, which depends only on $x_i$ and $\lambda$.
+$\mathbf{S}_\lambda$ is known as the smoother matrix, which depends only on $x_i$ and $\lambda$. 
+
+$\mathbf{S}_\lambda$ is symmetric and positive semidefinite and has real eigendecompistion. 
+ 
+The effective degree of freedom of a smoothing spline is 
+$$\text{df}_\lambda = \text{trace}(\mathbf{S}_\lambda)$$
+
+## 5. Automatic Selection of Smoothing Parameters
+
+Fix the df to determine $\lambda$
+
+```{r,eval=FALSE}
+smooth.spline(x,y,df = 6)
+```
+
+Covariance: $\text{Cov}(\hat{\mathbf{f}}) = \mathbf{S}_\lambda \text{Cov}(\by)\mathbf{S}_\lambda^T = \mathbf{S}_\lambda\mathbf{S}_\lambda^T$ assuming iid normal error
+
+Bias: $\text{Bias}(\hat{\mathbf{f}}) = f - \mathbf{S}_\lambda f$
+
+small $\text{df}_\lambda$: underfit and trims down the hills and fills in the valleys
+
+large $\text{df}_\lambda$: overfit and wiggly
+
+## 6. Nonparametric Logistic Regression
+
+$$\log \frac{Pr(Y = 1|X=x)}{Pr(Y = 0|X=x)} = f(x)$$
+
+where $f(x)$ is a smooth function. $Pr(Y=1|X=x)$ is therefore also smooth.
+
+The log likelihood is 
+
+
+$$l(f;\lambda) = \sum_{i=1}^N[y_if(x_i)-\log (1+e^{f(x_i)})] - \frac{1}{2}\int \{f''(t)\}^2dt$$
+
+
+## 7. Multidimensional Splines
+
+Generalized form
+
+$$\text{min}_f \sum_{i=1}^NB\{y_i - f(x_i)\}^2 +\lambda J[f]$$
+
+where $J$ is an appropriate penalty functional for stabilizing a function $f$ in $\mathbb{R}^d$. E.g. when $d = 2$, $J[f] = \int\int_\mathbb{R}^2[(\frac{\partial^2 f(x)}{\partial x_1^2})^2 + 2(\frac{\partial^2 f(x)}{\partial x_1 \partial x_2}) + (\frac{\partial^2 f(x)}{\partial x_2^2})^2]dx_1 dx_2$
+
+
+## 8. Regularization and Reproducing Kernel Hilbert Spaces
+
+## 9. Wavelet Smoothing
+  
+
+

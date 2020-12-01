@@ -12,14 +12,26 @@ output:
 ```{r,child = 'Chap2.Rmd'}
 ```
 
+\newpage
+
 # Chapter 3: Linear Methods for Regression
 ```{r,child = 'Chap3.Rmd'}
 ```
+
+\newpage
 
 # Chapter 4: Linear Methodsfor Classification
 ```{r,child = 'Chap4.Rmd'}
 ```
 
+\newpage
+
 # Chapter 5: Basis Expansions and Regularization
 ```{r,child = 'Chap5.Rmd'}
+```
+
+\newpage
+
+# Chapter 6: Kernel Smoothing Method
+```{r,child = 'Chap6.Rmd'}
 ```
