@@ -1,0 +1,22 @@
+## 1. Introduction
+
+__The performance of a learning method relates to its prediction capability on independent test data__
+
+## 2. Bias, Variance, and MOdel Complexity
+
+### 2.1 Regression
+
+* __Test error__: aka _generalization error_, is the prediction error over an independent test sample $\text{Err}_\tau = E{L(Y, \hat{f}(x))|\tau}$. $\tau$ represents a fixed training set.
+
+* __Expected prediction error__: or _expected test error_ $\text{Err} = E[L(Y,\hat{f}(X))] = E[\text{Err}_{\tau}]$. Expectation averages over everything that is random, including the randomness in the training set that produced $\hat{f}$. 
+
+* __Training error__: is the average loss over the traning sample $\bar{\text{err}}= \frac{1}{N}\sum_{i=1}^N L(y_i, \hat{f}(x_i))$
+
+
+### 2.2 Classification
+ Loss function can be 0-1 loss oir $-2\times$log likelihood (aka deviance.)
+ 
+
+### 2.3 Split of data
+
+Training (fit the model), validation (model selection), and test (model assessment). 

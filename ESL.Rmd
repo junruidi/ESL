@@ -35,3 +35,8 @@ output:
 # Chapter 6: Kernel Smoothing Method
 ```{r,child = 'Chap6.Rmd'}
 ```
+
+\newpage
+
+# Chapter 7: Model Assessment and Selection
+```{r,child = 'Chap7.Rmd'}

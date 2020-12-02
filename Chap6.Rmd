@@ -1,3 +1,40 @@
 ## 0. Introduction
 
-Class of regression techniques that achive flexibility in estimating the regression function $f(X)$ orver $\mathbb{R}^p$ by fitting different but simple model separately at each query poitn $x_0$ using only those observations close to the trage point $x_o$ to fit the simple model. This localization is achived via a weighting function kernel $K_\lambda(x_0,x_i)$. which assigns weight to $x_i$ based on its distance from $x_0$. 
+Class of regression techniques that achieve flexibility in estimating the regression function $f(X)$ over $\mathbb{R}^p$ by fitting different but simple model separately at each query point $x_0$ using only those observations close to the target point $x_o$ to fit the simple model. This localization is achieved via a weighting function kernel $K_\lambda(x_0,x_i)$. which assigns weight to $x_i$ based on its distance from $x_0$. 
+
+## 1. One-dimensional Kernel Smoothers
+
+KNN uses unweighted average in the neighbourbood which caused the bumpy estimation. One can assign weights that die off smoothly within distance from the traget point. 
+
+Kernel function
+
+$$K_\lambda(x_0, x) = D(\frac{|x-x_0|}{h_\lambda(x_0)})$$
+
+Locally weighted regression (at each target point $x_0$):
+$$\text{min}_{\alpha(x_0),\beta(x_0)} = \sum_{i=1}^N K_\lambda (x_0, x_i)[y_i - \alpha(x_0) -\beta(x_0)x_i]^2$$
+
+## 2. Selecting Width of the Kernel
+
+* small window $\rightarrow$ variance and small bias
+
+* wide window the other way around
+
+
+## 3. Kernel Density Estimation and Classification
+
+Kernel density: $\hat{f}_X(x_0) = \frac{1}{N\lambda}\sum_{i=1}^{N}K_{\lambda}(x_0,x_i)$. A popular choice of $K_\lambda$ is the Gaussian kernel $\phi(|x-x_0|/\lambda)$. 
+
+Suppose for a $J$ class problem ,w e fit nonparametric density estimates $\hat{f}_j(X), j = 1 \dots J$ in each class, and we know the class priors $\hat{\pi}_j$, then $\hat{\text{P}_\text{r}}(G=j|x_x0) = \frac{\hat{\pi}_j\hat{f}_j(x_0)}{\sum_k \hat{\pi}_k\hat{f}_k(x_0)}$
+
+
+## 3.1 Naive Bayes
+
+Assumption: Given a class $G=j$, the features $X_k$ in the p diemsnonal space are independent, i.e. $f_j(X) = \Pi_{k=1}^p f_{jk}(X_k)$
+
+* $f_{jk}$ can be estimated using one dimensional kernel density estimates. 
+
+## 4. Radial Basis Functions and Kernels
+
+Radial basis function treats kernel functions $K_\lambda (\xi, x)$ as basis functions for a smmothing spline estimation, whcih leads to 
+
+$$f(x) = \sum_{j=1}^M K_{\lambda_j}(\xi_j,x)\beta_j$$
