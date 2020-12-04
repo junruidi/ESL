@@ -10,7 +10,7 @@ __The performance of a learning method relates to its prediction capability on i
 
 * __Expected prediction error__: or _expected test error_ $\text{Err} = E[L(Y,\hat{f}(X))] = E[\text{Err}_{\tau}]$. Expectation averages over everything that is random, including the randomness in the training set that produced $\hat{f}$. 
 
-* __Training error__: is the average loss over the traning sample $\bar{\text{err}}= \frac{1}{N}\sum_{i=1}^N L(y_i, \hat{f}(x_i))$
+* __Training error__: is the average loss over the training sample $\bar{\text{err}}= \frac{1}{N}\sum_{i=1}^N L(y_i, \hat{f}(x_i))$
 
 
 ### 2.2 Classification
@@ -20,3 +20,30 @@ __The performance of a learning method relates to its prediction capability on i
 ### 2.3 Split of data
 
 Training (fit the model), validation (model selection), and test (model assessment). 
+
+## 3. Bia-Variance Decomposition
+
+The expected prediction error of a regression fit $\hat{f}(x)$ at input $X = x_0$
+$$\begin{aligned}
+\text{Err}(x_0) &= E[(Y - \hat{f}(x_0))^2|X=x_0]\\
+&= \sigma^2_\epsilon + [E\hat{f}(x_0) - f(x_0)]^2 + E[\hat{f}(x_0) - E\hat{f}(x_0)]^2\\
+&= \sigma^2_\epsilon + \text{Bias}^2(\hat{f}(x_0)) + \text{Var}(\hat{f}(x_0))
+\end{aligned}$$
+
+## 4. The Optimism of the Training Error Rate
+
+## 5. Estimates of In-Sample Prediction Error
+
+$C_p = \bar{\text{err}} + 2 \frac{d}{N}\hat{\sigma}^2_\epsilon$, $d$ is the number of inputs or basis functions
+
+$AIC = -\frac{2}{N}\text{loglik} + 2\frac{d}{N}$
+
+$AIC(\alpha) = \bar{\text{err}}(\alpha) + 2 \frac{d(\alpha)}{N}\hat{\sigma}^2_\epsilon$ for models with tuning parameter $\alpha$
+
+## 6. Effective Number of Parameters
+
+## 7. The Bayesian Approachj and BIC
+
+General form $\text{BIC} = -2\text{loglik} + (\log N)d$
+
+## 10. Cross Validation
