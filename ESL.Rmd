@@ -40,3 +40,70 @@ output:
 
 # Chapter 7: Model Assessment and Selection
 ```{r,child = 'Chap7.Rmd'}
+```
+
+\newpage
+
+# Chapter 8: Model Inference and Averaging
+```{r,child = 'Chap8.Rmd'}
+```
+
+\newpage
+
+# Chapter 9: Additive Models, Trees, and Related Methods
+```{r,child = 'Chap9.Rmd'}
+```
+
+\newpage
+
+# Chapter 10: Boosting and Addtive Trees
+```{r,child = 'Chap10.Rmd'}
+```
+
+\newpage
+
+# Chapter 11: Neural Networks
+```{r,child = 'Chap11.Rmd'}
+```
+
+\newpage
+
+# Chapter 12: Support Vector Machines and Flexible Discriminants
+```{r,child = 'Chap12.Rmd'}
+```
+
+\newpage
+
+# Chapter 13: Prototype Methods and Nearest-Neighbors
+```{r,child = 'Chap13.Rmd'}
+```
+
+\newpage
+
+# Chapter 14: Unsupervised Learning
+```{r,child = 'Chap14.Rmd'}
+```
+
+\newpage
+
+# Chapter 15: Random Forests
+```{r,child = 'Chap15.Rmd'}
+```
+
+\newpage
+
+# Chapter 16: Ensemble Learning
+```{r,child = 'Chap16.Rmd'}
+```
+
+\newpage
+
+# Chapter 17: Undirected Graphical Models
+```{r,child = 'Chap17.Rmd'}
+```
+
+\newpage
+
+# Chapter 18: High-Dimensional Problems: $p>>N$
+```{r,child = 'Chap17.Rmd'}
+```
