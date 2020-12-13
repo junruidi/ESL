@@ -1,2 +1,50 @@
 ## 1. Introduction
 
+* minimize sum of square for regression
+
+* minimize cross entropy for classification
+
+
+## 2. The Bootstrape and Maximum Likelihood Methods
+
+### 2.1 A smoothing example
+
+Denote the training data by $\bZ = \{z_1,z_2,\dots,z_n\}$, with $z_i = (x_i,y_i)$, and $x_i \in \mathbb{R}^1$. If we use a B-spline basis expansion with 3 knots placed on the quartiles, we can represent the function by
+
+$$E(Y|X=x) = \mu(x) = \sum_{j=1}^7\beta_jh_j(x)$$
+
+__MSE__
+
+The MSE can be represented by $\hat{\beta} = (\bH^T\bH)^{-1}\bH^T\by$, where $\bH \in \mathbb{R}^{N \times 7}$ with $ij$th elements $h_j(x_i)$. The estimated covariance matrix of $\hat{\beta}$ is $\hat{\text{Var}}(\hat{\beta}) = (\bH^T\bH)^{-1}\hat{\sigma}^2$, where $\hat{\sigma}^2 = \sum_{i=1}^N (y_i - \hat{\mu}(x_i))^2/N$. The standard error of a prediction $\hat{\mu}(x) = h(x)\hat{\beta}$ is $\hat{\text{SE}}[\hat{\mu}(x)] = [h(x)^T(\bH^T\bH)^{-1}h(x)]^{1/2}\hat{\sigma}$. This can be used to construct the confidence interval. 
+
+
+__Bootstrape Approach__
+
+Nonparametric bootstrap: Draw $B$ datasets each of size $N=50$ with replacement, where the sampling unit is $z_i = (x_i,y_i)$. Using each boostrapped dataset $\bZ^*$, we fit a cubic spline $\hat{\mu}^*(x)$. With large enough resamles, we can use percentiles to get the confidence band.
+
+Parametric bootstrap: simulate new responses by adding GAussian noise to the predicted values (assuming we assume a Gaussian error for the original model). 
+
+
+### 2.2 MLE
+
+In general parametric bootstrap agree with MLE. 
+
+ADD MLE FURTHER
+
+
+## 3. Baysian Methods
+
+Baysian specifies a sampling model $\text{Pr}(\bZ|\theta)$, and a prior distribution for the parameter $\text{Pr}(\theta)$ representing our knowledge about $\theta$. The goal is to compute the posterior distribution
+
+$$Pr(\theta|\bZ) = \frac{Pr(\bZ|\theta)\cdot Pr(\theta)}{\int Pr(\bZ|\theta)\cdot Pr(\theta) d\theta}$$.
+
+A future observation can be predicted via the predictive distribution
+
+$$Pr(z^{new}|\bZ) = \int Pr(z^{new}|\theta) Pr(\theta|\bZ)d\theta$$
+
+
+
+
+
+
+

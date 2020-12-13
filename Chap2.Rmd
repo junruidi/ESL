@@ -2,6 +2,9 @@
 \newcommand{\bY}{\mathbf{Y}}
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\by}{\mathbf{y}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bH}{\mathbf{H}}
 
 ## 0. Notations
 
