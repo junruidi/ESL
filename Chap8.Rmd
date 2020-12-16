@@ -7,7 +7,7 @@
 
 ## 2. The Bootstrape and Maximum Likelihood Methods
 
-### 2.1 A smoothing example
+### 2.1 A Smoothing Example
 
 Denote the training data by $\bZ = \{z_1,z_2,\dots,z_n\}$, with $z_i = (x_i,y_i)$, and $x_i \in \mathbb{R}^1$. If we use a B-spline basis expansion with 3 knots placed on the quartiles, we can represent the function by
 
@@ -41,6 +41,32 @@ $$Pr(\theta|\bZ) = \frac{Pr(\bZ|\theta)\cdot Pr(\theta)}{\int Pr(\bZ|\theta)\cdo
 A future observation can be predicted via the predictive distribution
 
 $$Pr(z^{new}|\bZ) = \int Pr(z^{new}|\theta) Pr(\theta|\bZ)d\theta$$
+
+## 4. Boostrape v.s Baysian Inference
+
+## 5. The EM Algorithm
+
+### 5.1 Two-Component Mixture Model
+
+### 5.2 EM in General
+
+### 5.3. EM as a Maximization - Maximzation Procedure
+
+## 6. MCMC for Sampling from the Posterior
+
+## 7. Bagging
+
+Bootstrap mean is approximately a posterior average, 
+
+Consider training data $\bZ = \{(x_1,y_1),\dots, (x_N,y_N)\}$ and prediction $\hat{f}(x)$ at input $x$. Bagging (bootstrap aggregation) averages this prediction over a collection of bootstrap samples, thereby reducing its variance. For each bootstrap sample $\bZ^{*b}, b = 1...B$, we fit the model and get the prediction $\hat{f}^{*b}(x)$. The bagging estimate is defined by 
+
+$$\hat{f}_{bag}(x) = \frac{1}{B}\sum_{b=1}^B \hat{f}^{*b}(x)$$
+
+For a classification problem with $K$ responses, and the predicted classes $\hat{G}(x)$. For each single prediction, it provides an indicator vector with value a single one and K-1
+ zeroes. The the bagged estimation is a K-vector $[p_1(x),p_2(x),..., p_K(x)]$, with $p_k(x)$ equal to the proportion of predicted class $k$ at $x$. 
+
+
+
 
 
 
