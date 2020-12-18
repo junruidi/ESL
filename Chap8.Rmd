@@ -5,7 +5,7 @@
 * minimize cross entropy for classification
 
 
-## 2. The Bootstrape and Maximum Likelihood Methods
+## 2. The Bootstrap and Maximum Likelihood Methods
 
 ### 2.1 A Smoothing Example
 
@@ -64,6 +64,10 @@ $$\hat{f}_{bag}(x) = \frac{1}{B}\sum_{b=1}^B \hat{f}^{*b}(x)$$
 
 For a classification problem with $K$ responses, and the predicted classes $\hat{G}(x)$. For each single prediction, it provides an indicator vector with value a single one and K-1
  zeroes. The the bagged estimation is a K-vector $[p_1(x),p_2(x),..., p_K(x)]$, with $p_k(x)$ equal to the proportion of predicted class $k$ at $x$. 
+ 
+## 8. Model Averaging and Stacking
+ 
+ 
 
 
 
