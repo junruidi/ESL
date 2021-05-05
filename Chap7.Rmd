@@ -55,6 +55,8 @@ Bias-variance tradeoff behaves differently for 0-1 loss that it does for squared
 
 ## 4. The Optimism of the Training Error Rate
 
+https://www.stat.cmu.edu/~ryantibs/advmethods/notes/errval.pdf
+
 ## 5. Estimates of In-Sample Prediction Error
 
 $C_p = \bar{\text{err}} + 2 \frac{d}{N}\hat{\sigma}^2_\epsilon$, $d$ is the number of inputs or basis functions
