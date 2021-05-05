@@ -6,20 +6,39 @@ __The performance of a learning method relates to its prediction capability on i
 
 ### 2.1 Regression
 
-* __Test error__: aka _generalization error_, is the prediction error over an independent test sample $\text{Err}_\tau = E{L(Y, \hat{f}(x))|\tau}$. $\tau$ represents a fixed training set.
+* __Test error__: aka _generalization error_, is the prediction error over an independent test sample $\text{Err}_\tau = E{L(Y, \hat{f}(x))|\tau}$. $\tau$ represents a fixed training set. (Error in population based on a fixed training set)
 
-* __Expected prediction error__: or _expected test error_ $\text{Err} = E[L(Y,\hat{f}(X))] = E[\text{Err}_{\tau}]$. Expectation averages over everything that is random, including the randomness in the training set that produced $\hat{f}$. 
+* __Expected prediction error__: or _expected test error_ $\text{Err} = E[L(Y,\hat{f}(X))] = E[\text{Err}_{\tau}]$. Expectation averages over everything that is random, including the randomness in the training set that produced $\hat{f}$. (Error of the model itself on average) 
 
-* __Training error__: is the average loss over the training sample $\bar{\text{err}}= \frac{1}{N}\sum_{i=1}^N L(y_i, \hat{f}(x_i))$
+* __Training error__: is the average loss over the training sample $\bar{\text{err}}= \frac{1}{N}\sum_{i=1}^N L(y_i, \hat{f}(x_i))$ (Error of the training set)
+
+Training error, decreasing over model complexity, is not a good estimate of test error.  
 
 
 ### 2.2 Classification
- Loss function can be 0-1 loss oir $-2\times$log likelihood (aka deviance.)
- 
+
+Loss function can be 0-1 loss or $-2\times$log likelihood (aka deviance.)
+
+For response $G$ with $G = 1, 2, 3, ...K$ as the categories and predictor $X$, we model the probability $p_k(X) =  \text{Pr}(G = k|X)$, using $\hat{G}(X) = \text{argmax}_k\hat{p}_k(X)$. 
+
+$L(G, \hat{p}(X)) = -2\sum_kI(G=k)\log \hat{p}_k (X) = -1\log\hat{p}_G(X)$, i.e. $-2 \times$ log likelihood.
+
+* __Test error__: $\text{Err}_\tau = E{L(G, \hat{G}(x))|\tau}$
+
+* __Training error__: $\bar{\text{err}} = -\frac{2}{N}\sum_i \log\hat{p}_{g_i}(x_i)$, the sampling log-likelihood (to be minimized as there is the -2)
+
+
+__In general__, $L(Y,\theta(X)) = -2\cdot \log\text{Pr}_{\theta(X)}(Y)$, the -2 times of the log likeliihood can be used a s loss function for general response densities, such as Poisoon, gamma, exponential, log-normal, and others. 
+
+
+__Goal:__ For some tuning parameter $\alpha$ that determines the prediction $\hat{f}_\alpha(x)$, that minimizes the error, that is produces the minimum of the __average test error__. 
 
 ### 2.3 Split of data
 
-Training (fit the model), validation (model selection), and test (model assessment). 
+Training (fit the model), validation (model selection), and test (model assessment, 25% typically). 
+
+
+Validation can be done anlytically (AIC, BIC, MDL, SRM), or by efficient re-use (cross validation and bootstrap). 
 
 ## 3. Bia-Variance Decomposition
 
@@ -27,8 +46,12 @@ The expected prediction error of a regression fit $\hat{f}(x)$ at input $X = x_0
 $$\begin{aligned}
 \text{Err}(x_0) &= E[(Y - \hat{f}(x_0))^2|X=x_0]\\
 &= \sigma^2_\epsilon + [E\hat{f}(x_0) - f(x_0)]^2 + E[\hat{f}(x_0) - E\hat{f}(x_0)]^2\\
-&= \sigma^2_\epsilon + \text{Bias}^2(\hat{f}(x_0)) + \text{Var}(\hat{f}(x_0))
+&= \sigma^2_\epsilon + \text{Bias}^2(\hat{f}(x_0)) + \text{Var}(\hat{f}(x_0))\\
+&= \text{Irreducible error} + \text{Bias}^2 + \text{Variance}
 \end{aligned}$$
+
+
+Bias-variance tradeoff behaves differently for 0-1 loss that it does for squared error loss. If our estimate is $p = 0.6$, as compared to true $p = 0.9$, even if the squared bias is significant, but we still have made correct decision.
 
 ## 4. The Optimism of the Training Error Rate
 
@@ -42,7 +65,7 @@ $AIC(\alpha) = \bar{\text{err}}(\alpha) + 2 \frac{d(\alpha)}{N}\hat{\sigma}^2_\e
 
 ## 6. Effective Number of Parameters
 
-## 7. The Bayesian Approachj and BIC
+## 7. The Bayesian Approach and BIC
 
 General form $\text{BIC} = -2\text{loglik} + (\log N)d$
 
