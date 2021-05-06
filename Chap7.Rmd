@@ -4,6 +4,9 @@ __The performance of a learning method relates to its prediction capability on i
 
 ## 2. Bias, Variance, and MOdel Complexity
 
+
+* Training Error $\rightarrow$ * Test Error $\rightarrow$ * Expected test error
+
 ### 2.1 Regression
 
 * __Test error__: aka _generalization error_, is the prediction error over an independent test sample $\text{Err}_\tau = E{L(Y, \hat{f}(x))|\tau}$. $\tau$ represents a fixed training set. (Error in population based on a fixed training set)
@@ -55,21 +58,51 @@ Bias-variance tradeoff behaves differently for 0-1 loss that it does for squared
 
 ## 4. The Optimism of the Training Error Rate
 
+Define the training set $\tau = \{(x_1,y_1),(x_2,y_2),\dots, (x_N,y_N)\}$ (fixed), and new test data from the joint distribution $(X^0, Y^0)$. 
+
+The test error/ generalization error is $\text{Err}_\tau = E_{X^0,Y^0}[{L(Y^0, \hat{f}(X^0))|\tau}]$
+
+The expected test/prediction error is $\text{Err} = E_{\tau}E_{X^0,Y^0}[{L(Y^0, \hat{f}(X^0))|\tau}]$, that is averging over training sets
+
+The training error is $\bar{\text{err}}= \frac{1}{N}\sum_{i=1}^N L(y_i, \hat{f}(x_i))$
+
+The training error is always going to be smaller than the test error, i.e. training error is overly optimistic. 
+
+The expected optimism can be represented as $\omega = \frac{2}{N}\sum_{i = 1}^N \text{Cov}(\hat{y}_i, y_i)$, i.e. how strongly $y_i$ affects its own prediction. If we fit the data too hard, then the optimism is large. 
+
+
+To estimate expected prediction error from training error:
+
+* Estimate the optimism (can be easily done for linear model, $\omega = \frac{2d}{N}\sigma^2_{\epsilon}$),  and add it to the training error
+
+* Do cross-validation or bootstrap to get direct estimate of extra sample error $\text{Err}$. (applicable to any loss function without linear assumption)
+
+* In sample error rate is used for model selection. 
+
 https://www.stat.cmu.edu/~ryantibs/advmethods/notes/errval.pdf
+
+
+Sections 5 - 7 are about in sample error estimation for model selection
 
 ## 5. Estimates of In-Sample Prediction Error
 
 $C_p = \bar{\text{err}} + 2 \frac{d}{N}\hat{\sigma}^2_\epsilon$, $d$ is the number of inputs or basis functions
 
-$AIC = -\frac{2}{N}\text{loglik} + 2\frac{d}{N}$
+$AIC = -\frac{2}{N}\text{loglik} + 2\frac{d}{N}$, where $\text{loglik} = \sum_{i=1}^N\log\text{Pr}_{\hat{\theta}}(y_i)$, i.e. the maximized log-likelihood, and $d$ is model complexity. (Used when the fitting is carried out by maximization of a likelihood)
 
 $AIC(\alpha) = \bar{\text{err}}(\alpha) + 2 \frac{d(\alpha)}{N}\hat{\sigma}^2_\epsilon$ for models with tuning parameter $\alpha$
 
 ## 6. Effective Number of Parameters
+ 
+For a linear fitting model $\hat{y} = Sy$ including linear regression on the original features or a derived basis set, and smoothing methods that use quadratic shrinkage, such as ridge regression and cubic smoothing splines, the effective number of parameters is defined as $df(S) = \text{trace}(S)$. 
 
 ## 7. The Bayesian Approach and BIC
 
 General form $\text{BIC} = -2\text{loglik} + (\log N)d$
+
+AIC tends to choose models with are too complex when $N \rightarrow \infty$, and for finite samples BIC often chooses models that are too simply due to its heavy penalty on complexity
+
+## 8. Minimum Description Length
 
 ## 10. Cross Validation
 
